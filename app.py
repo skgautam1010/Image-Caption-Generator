@@ -6,6 +6,7 @@ from PIL.ImagePalette import load
 from keras.preprocessing.sequence import pad_sequences
 from keras.applications.xception import Xception
 from keras.models import Model, load_model
+
 from pickle import dump, load
 
 ap = argparse.ArgumentParser()
