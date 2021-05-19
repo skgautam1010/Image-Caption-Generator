@@ -59,13 +59,7 @@ def generate_desc(model, tokenizer, photo, max_length):
     return in_text
 
 max_length = 32
-tokenizer = load(open("tokenizer.p","rb"))
-model = load_model('models/model_9.h5') 
-xception_model = Xception(include_top=False, pooling="avg")
-photo = extract_features(img_path, xception_model)
-img = Image.open(img_path)
 
-description = generate_desc(model, tokenizer, photo, max_length)
 
 app=Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT']=1
@@ -79,6 +73,14 @@ def index():
 def prediction():
     file=request.files['file1']
     file.save('static/file.jpg')
+    tokenizer = load(open("tokenizer.p","rb"))
+    model = load_model('models/model_9.h5') 
+    xception_model = Xception(include_top=False, pooling="avg")
+    photo = extract_features(img_path, xception_model)
+    img = Image.open(img_path)
+
+    description = generate_desc(model, tokenizer, photo, max_length)
+    
     if request.method=='POST':
         return render_template('predict.html',description=description)
 
