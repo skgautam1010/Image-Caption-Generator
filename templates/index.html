@@ -1,7 +1,41 @@
-<!Doctype html>
 <html>
-    <form action="{{url_for("prediction")}}" enctype="multipart/form-data" method="POST">
-    <input type="file" name='file1'/>
-    <input type="submit" value="submit"/>
-    </form>
+<head>
+<link rel="stylesheet" href="static/css/index.css"/>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
+
+<script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+{% extends "base.html" %}
+{% block body %}
+<body class="body">
+<div class="header-container">
+<img src="https://user-images.githubusercontent.com/26179770/106359099-693e3380-6336-11eb-8069-9e36f25de5ca.png"
+                class="head-image"
+                alt="HeaderImage"
+            />
+<h1 style="margin-top:20px;">Caption It!</h1>
+</div>
+<form action="/" method="post" enctype="multipart/form-data">
+<div id="wrapper"><br>
+ <input type="file" name="file1" accept="image/*" onchange="preview_image(event)"><br><br><br>
+
+ <img src="{{url_for('static',filename='files.jpg')}}" id="output_image"/><br><br><br>
+  <input type="submit" class="button-text" value="GENERATE CAPTION">
+</div>
+</form>
+<div class="caption-text"><h2 style="margin-left:30px;">Generated Caption: <i>{{desc}}</i></h2></div>
+ {% endblock %}   
+</body>
 </html>
