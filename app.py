@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask.helpers import flash
 from flask_sqlalchemy import SQLAlchemy
 #from keras_applications.imagenet_utils import _obtain_input_shape
 import numpy as np
@@ -68,7 +69,7 @@ max_length = 32
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Skg@123!@localhost/flask_learning'
 db = SQLAlchemy(app)
 
@@ -106,6 +107,7 @@ def contactus():
                         contact=contactus, email=emailid, msg=feedback)
         db.session.add(entry)
         db.session.commit()
+        flash("Feedback Received..We will get back to you very soon!!!", "success")
 
     return render_template('contactus.html')
 
@@ -123,13 +125,14 @@ def prediction():
         img = Image.open(img_path)
 
         description = generate_desc(model, tokenizer, photo, max_length)
-
+        size = len(description)
+        description = description[:size-3]
         '''result_dic = {
             'img_path': img_path,
             'caption': description
         }'''
 
-    return render_template('index.html', desc=description)
+    return render_template('index.html', description=description, img_path=img_path)
 
 
 app.run(debug=True)

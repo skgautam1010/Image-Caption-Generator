@@ -13,8 +13,12 @@
     width: 995px;
 }
 
-#output_image {
+.output_img {
     max-width: 500px;
+}
+
+#output_image {
+    max-width: 300px;
 }
 
 .header-container {
@@ -28,6 +32,7 @@
     width: 250px;
 }
 
+
 .button-text:hover {
     background-color: dodgerblue;
 }
@@ -35,4 +40,9 @@
 .caption-text {
     font-family: 'Hachi Maru Pop', cursive;
     margin: 25px 0 15px 0;
+}
+
+.out {
+    display: flex;
+    justify-content: center;
 }
