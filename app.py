@@ -127,12 +127,9 @@ def prediction():
         description = generate_desc(model, tokenizer, photo, max_length)
         size = len(description)
         description = description[:size-3]
-        '''result_dic = {
-            'img_path': img_path,
-            'caption': description
-        }'''
 
     return render_template('index.html', description=description, img_path=img_path)
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=False, host='0.0.0.0')
