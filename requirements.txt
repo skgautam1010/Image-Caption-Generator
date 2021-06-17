@@ -19,7 +19,6 @@ pipenv==2020.8.13
 PyMySQL==0.10.1
 SQLAlchemy==1.4.6
 tensorboard==2.2.2
-tensorboard-plugin-wit==1.8.0
 tensorflow==2.2.0
 tensorflow-estimator==2.2.0
 tqdm==4.61.1
