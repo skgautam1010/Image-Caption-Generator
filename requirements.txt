@@ -20,7 +20,6 @@ pipenv==2020.8.13
 pylint==2.5.3
 PyMySQL==0.10.1
 scikit-learn==0.23.2
-scipy==1.4.1
 SQLAlchemy==1.4.6
 tensorboard==2.2.2
 tensorboard-plugin-wit==1.8.0
