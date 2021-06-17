@@ -9,13 +9,9 @@ Keras-Preprocessing==1.1.2
 mysql==0.0.3
 mysql-connector-python==8.0.21
 mysqlclient==2.0.3
-nltk==3.6.2
 Pillow==7.2.0
-pipenv==2020.8.13
 PyMySQL==0.10.1
 SQLAlchemy==1.4.6
 tensorboard==2.5.0
 tensorflow==2.5.0
 tensorflow-estimator==2.5.0
-tqdm==4.61.1
-virtualenv==20.1.0
