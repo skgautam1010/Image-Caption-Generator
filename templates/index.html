@@ -5,18 +5,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
 
-<script type='text/javascript'>
-  function preview_image(event) 
-  {
-    var reader = new FileReader();
-    reader.onreload = function()
-    {  
-      var output = document.getElementById('output_image');
-      output.src = reader.result;
-    }
-    reader.readAsDataURL(event.target.files[0]);
-  }
-</script>
 {% extends "base.html" %}
 {% block body %}
 <body class="body">
@@ -28,18 +16,22 @@
     <h1 style="margin-top:20px;">Caption Generator</h1>
 </div>
 <form action="/" method="post" enctype="multipart/form-data">
-  <div id="wrapper"><br><br><br>
-    <input type="file" accept="image/*" name="file1" onchange="preview_image(event)" required><br><br><br>
-    <img id="output_image" />
-    <br><br>
+  <div class="wrapper"><br><br>
+    <input type="file" accept="image/*" name="file1" required><br><br><br>
+    <br>
     <input type="submit" class="button-text" value="GENERATE CAPTION">
   </div>
 </form>
-<div class="out">
-<img src="{{img_path}}" class="output_img"/>
-</div>
-<div class="caption-text"><h2 style="margin-left:30px;">Generated Caption: <i>{{description}}</i></h2></div>
- 
+  <div class="cards">
+    {% if description %}
+    <div class="card">
+      <img src="{{img_path}}" alt="Image" class="card-image">
+        <div class="card-content">
+        <p><b><u> {{description}}</u></b></p>
+        </div>
+    </div>
+    {% endif %}
+  </div>
  {% endblock %}   
 </body>
 </html>
