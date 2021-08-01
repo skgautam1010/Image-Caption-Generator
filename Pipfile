@@ -10,6 +10,7 @@ numpy = "*"
 keras = "*"
 pillow = "*"
 tensorflow = "*"
+gunicorn = "*"
 
 [dev-packages]
 
