@@ -119,7 +119,7 @@ def prediction():
         img_path = "./static/files.jpg"
         file.save(img_path)
         tokenizer = load(open("tokenizer.p", "rb"))
-        model = load_model('models/model_9.h5')
+        model = load_model('model_9.h5')
         xception_model = Xception(include_top=False, pooling="avg")
         photo = extract_features(img_path, xception_model)
         img = Image.open(img_path)
@@ -133,4 +133,4 @@ def prediction():
 
 
 if __name__ == '__main__':
-    app.run(debug=False,host='0.0.0.0')
+    app.run(debug=True)
